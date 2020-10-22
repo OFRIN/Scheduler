@@ -10,8 +10,8 @@ class MainWindow(QWidget):
         self.title = 'Scheduler v1.1'
         self.font_name = 'Arial'
 
-        self.window_size = (1280, 1080)
-        self.table_size = (1260, 300)
+        self.window_size = (1280, 800)
+        self.table_size = (1240, 200)
         self.label_size = (350, 20)
         self.progress_size = (-1, 20)
         self.margin_size = (20, 10)
@@ -25,9 +25,9 @@ class MainWindow(QWidget):
         self.section_start_y = self.margin_size[1]
 
         self.section_dic = {}
-        self.get_section(1, '# Monthly Goals', 3)
-        self.get_section(2, '# Weekly Goals', 5)
-        self.get_section(3, '# Daily Goals', 10)
+        self.get_section(1, '# Monthly Goals', 1)
+        self.get_section(2, '# Weekly Goals', 2)
+        self.get_section(3, '# Daily Goals', 5)
 
     def get_section(self, section_index, label_name, the_number_of_box):
         section_name = f'section_{section_index}'
@@ -51,9 +51,10 @@ class MainWindow(QWidget):
         table = QtWidgets.QTableWidget(the_number_of_box, len(self.table_header_labels), parent=self)
         table.setGeometry(self.get_bbox(self.section_start_x, self.section_start_y + self.progress_size[1] + self.margin_size[1], self.table_size[0], self.table_size[1]))
         
-        table.setColumnWidth(0, 30)
-        table.setColumnWidth(1, 30)
-        table.setColumnWidth(2, self.table_size[0] - (30 * 2))
+        table.setColumnWidth(0, 60)
+        table.setColumnWidth(1, 60)
+
+        table.horizontalHeader().setSectionResizeMode(2, QHeaderView.Stretch)
         
         for i in range(the_number_of_box):
             table.setRowHeight(i, 30)
