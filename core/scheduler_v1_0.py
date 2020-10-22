@@ -25,8 +25,8 @@ class MainWindow(QWidget):
         self.section_start_y = 60
 
         self.section_dic = {}
-        for section_index in range(1):
-            self.get_section(section_index + 1, 100, (600, 20), 5)
+        for section_index in range(2):
+            self.get_section(section_index + 1, 100, (600, 20), 10)
 
     def get_section(self, section_index, btn_width, box_size, the_number_of_check_box):
         section_name = f'section_{section_index}'
